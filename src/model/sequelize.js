@@ -8,12 +8,14 @@ const {
 } = require('sequelize');
 
 const {
-  dbPort,
-  dbHost,
-  dbName,
-  dbUser,
-  dbPassword,
-  sequelizeDialect,
+  database: {
+    dbPort,
+    dbHost,
+    dbName,
+    dbUser,
+    dbPassword,
+    sequelizeDialect,
+  },
 } = require('../config');
 
 // @ts-ignore

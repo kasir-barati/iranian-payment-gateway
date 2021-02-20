@@ -1,23 +1,25 @@
 // @ts-check
 
 const config = {
-  dbName: process.env.POSTGRES_DB,
-  dbUser: process.env.POSTGRES_USER,
-  dbPort: Number(process.env.POSTGRES_PORT),
-  dbHost: process.env.POSTGRES_HOST,
-  dbPassword: process.env.POSTGRES_PASSWORD,
-  sequelizeDialect: process.env.SEQUELIZE_DIALECT,
+  database: {
+    dbName: process.env.POSTGRES_DB,
+    dbUser: process.env.POSTGRES_USER,
+    dbPort: Number(process.env.POSTGRES_PORT),
+    dbHost: process.env.POSTGRES_HOST,
+    dbPassword: process.env.POSTGRES_PASSWORD,
+    sequelizeDialect: process.env.SEQUELIZE_DIALECT,
+  },
   appPort: Number(process.env.APP_PORT),
   appHost: process.env.APP_HOST,
 };
 
 if (
-  config.dbName === undefined ||
-  config.dbUser === undefined ||
-  config.dbPort === undefined ||
-  config.dbHost === undefined ||
-  config.dbPassword === undefined ||
-  config.sequelizeDialect === undefined ||
+  config.database.dbName === undefined ||
+  config.database.dbUser === undefined ||
+  config.database.dbPort === undefined ||
+  config.database.dbHost === undefined ||
+  config.database.dbPassword === undefined ||
+  config.database.sequelizeDialect === undefined ||
   config.appPort === undefined ||
   config.appHost === undefined
 ) {
