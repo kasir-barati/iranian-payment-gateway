@@ -1,0 +1,27 @@
+{
+  "name": "iranian-payment-gateway",
+  "version": "0.1.0",
+  "description": "An implementation for the zibal, zarinpal & sadad",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nodejsdeveloperskh/iranian-payment-gateway.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nodejsdeveloperskh/iranian-payment-gateway/issues"
+  },
+  "homepage": "https://github.com/nodejsdeveloperskh/iranian-payment-gateway#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "express": "^4.17.1",
+    "pg": "^8.5.1",
+    "sequelize": "^6.5.0"
+  }
+}
