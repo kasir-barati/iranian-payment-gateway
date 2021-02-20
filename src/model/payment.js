@@ -1,7 +1,10 @@
 // @ts-check
-const { Model, DataTypes } = require('sequelize');
+const {
+  Model,
+  DataTypes,
+  Sequelize,
+} = require('sequelize');
 
-const { getSequelizeInstance } = require('./sequelize');
 const paymentStates = require('../component/payment-state.json');
 
 class Payment extends Model {
@@ -20,29 +23,40 @@ class Payment extends Model {
   };
 }
 
-Payment.init(
-  {
-    [Payment.col.id]: {
-      type: DataTypes.STRING,
-      primaryKey: true,
+/**
+ *
+ * @param {Sequelize} sequelize
+ */
+function initModel(sequelize) {
+  Payment.init(
+    {
+      [Payment.col.id]: {
+        type: DataTypes.STRING,
+        primaryKey: true,
+      },
+      [Payment.col.paidAt]: {
+        type: DataTypes.DATE,
+      },
+      [Payment.col.amount]: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      [Payment.col.state]: {
+        type: DataTypes.ENUM(
+          ...Object.values(paymentStates),
+        ),
+        defaultValue: paymentStates.authorized,
+      },
     },
-    [Payment.col.paidAt]: {
-      type: DataTypes.DATE,
+    {
+      timestamps: true,
+      paranoid: true,
+      sequelize,
     },
-    [Payment.col.amount]: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
-    [Payment.col.state]: {
-      type: DataTypes.ENUM(...Object.values(paymentStates)),
-      defaultValue: paymentStates.authorized,
-    },
-  },
-  {
-    timestamps: true,
-    paranoid: true,
-    sequelize: getSequelizeInstance(),
-  },
-);
+  );
+}
 
-module.exports = Payment;
+module.exports = {
+  Payment,
+  initModel,
+};
