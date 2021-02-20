@@ -13,10 +13,9 @@ services:
     environment:
       PGDATA: /var/lib/postgresql/data/pgdata
     container_name: ${APP_NAME}-db
-    # ports:
-    #   - "${DOCKER_CONTAINER_DB_PORT}:${DOCKER_CONTAINER_DB_PORT}"
+
   express-app:
-    image: ${APP_NAME}-express-app
+    image: ${APP_NAME}-express-app:1
     build:
       context: .
       dockerfile: ./Dockerfile
