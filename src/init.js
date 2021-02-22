@@ -3,20 +3,27 @@ const {
   authenticate,
   getSequelizeInstance,
 } = require('./model/sequelize');
+
+const settingModel = require('./model/setting');
 const paymentModel = require('./model/payment');
 const paymentInfoModel = require('./model/payment-info');
+const {
+  initializeSadadPaymentGatewayInfo,
+} = require('./component/sadad');
 
-async function initializeDatabase() {
-  let sequelizeInstance = await getSequelizeInstance();
+async function initDatabase() {
+  let sequelizeInstance = getSequelizeInstance();
 
   await authenticate();
 
   paymentModel.initModel(sequelizeInstance);
   paymentInfoModel.initModel(sequelizeInstance);
+  settingModel.initModel(sequelizeInstance);
 
-  sequelizeInstance.sync();
+  await sequelizeInstance.sync();
 }
 
-module.exports = {
-  initializeDatabase,
+module.exports = async () => {
+  await initDatabase();
+  await initializeSadadPaymentGatewayInfo();
 };

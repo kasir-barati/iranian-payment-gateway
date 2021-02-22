@@ -2,10 +2,10 @@
   "name": "iranian-payment-gateway",
   "version": "0.1.0",
   "description": "An implementation for the zibal, zarinpal & sadad",
-  "main": "src/index.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node src/index.js"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
