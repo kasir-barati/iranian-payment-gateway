@@ -11,6 +11,16 @@ const config = {
   },
   appPort: Number(process.env.APP_PORT),
   appHost: process.env.APP_HOST,
+  paymentGateway: {
+    sadad: {
+      group: 'sadad',
+      keys: {
+        MerchentId: 'MerchentId',
+        TerminalId: 'TerminalId',
+        TerminalKey: 'TerminalKey',
+      },
+    },
+  },
 };
 
 if (
