@@ -11,6 +11,9 @@ const config = {
   },
   appPort: Number(process.env.APP_PORT),
   appHost: process.env.APP_HOST,
+  regex: {
+    isNumberRegex: /^[0-9]/,
+  },
   paymentGateway: {
     sadad: {
       group: 'sadad',
