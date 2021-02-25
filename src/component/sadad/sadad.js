@@ -1,21 +1,21 @@
 // @ts-check
 const { default: Axios } = require('axios');
 
-const { Setting } = require('../model/setting');
-const settingRepository = require('../repository/setting');
+const { Setting } = require('../../model/setting');
+const settingRepository = require('../../repository/setting');
 
 const {
   EmptySadadSettings,
   SadadSettingDeleted,
-} = require('./system-errors');
+} = require('../system-errors');
 
 const {
   paymentGateway: { sadad },
-} = require('../config');
+} = require('../../config');
 const {
   settingEventsName,
   settingEventEmitter,
-} = require('./setting-event-emitter');
+} = require('../setting-event-emitter');
 
 // Request/PaymentRequest
 
