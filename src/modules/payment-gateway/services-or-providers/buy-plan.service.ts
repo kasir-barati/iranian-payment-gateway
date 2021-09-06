@@ -50,7 +50,7 @@ export class BuyPlanService extends TransactionService {
             asTo: this.memberShipPlan!._id.toString(),
             refModel: RefModel['membership-plan'],
             realAmount: this.memberShipPlan!.price,
-            owner: this.contractor!._id.toString(),
+            owner: this.contractor!.user.toString(),
             authority: clientRefId,
             label: [TransactionLabels.BUY_MEMBER_SHIP_PLAN],
         });
@@ -82,7 +82,7 @@ export class BuyPlanService extends TransactionService {
         const contractors = await this.contractorService.aggregate([
             {
                 $match: {
-                    _id: new ObjectId(
+                    user: new ObjectId(
                         this.transaction.owner.toString(),
                     ),
                 },
