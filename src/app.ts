@@ -1,4 +1,3 @@
-// @ts-check
 const express = require('express');
 
 const app = express();
@@ -7,13 +6,13 @@ const { appHost, appPort } = require('./config');
 
 const { sendResponse } = require('./endware/send-response');
 const {
-  expectedErrorHandler,
+    expectedErrorHandler,
 } = require('./endware/expected-error-handler');
 const {
-  unexpectedErrorHandler,
+    unexpectedErrorHandler,
 } = require('./endware/unexpected-error-handler');
 const {
-  endpointNotFoundErrorHandler,
+    endpointNotFoundErrorHandler,
 } = require('./endware/endpoint-not-found-error-handler');
 
 const paymentRouter = require('./router/payment');
@@ -28,12 +27,14 @@ app.use(expectedErrorHandler);
 app.use(unexpectedErrorHandler);
 
 function listenExpressApp() {
-  app.listen(appPort, appHost, () => {
-    console.log(`Web API is up and running on ${appPort}`);
-  });
+    app.listen(appPort, appHost, () => {
+        console.log(
+            `Web API is up and running on ${appPort}`,
+        );
+    });
 }
 
 module.exports = {
-  app,
-  listenExpressApp,
+    app,
+    listenExpressApp,
 };

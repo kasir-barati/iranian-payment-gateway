@@ -3,7 +3,7 @@
 // const { promises: readdir } = require('fs');
 
 // /**
-//  * 
+//  *
 //  * @param {string} path absolute path
 //  */
 // async function requireAllJsFilesIn(path) {
